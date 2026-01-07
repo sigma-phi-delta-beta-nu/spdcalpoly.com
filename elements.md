@@ -25,33 +25,33 @@ nav-menu: true
 	</div>
 </div>
 
-<h2>Fall RUSH 2025</h2>
+<h2>WINTER RUSH 2026</h2>
 <h3>What is Rush?!</h3>
-<h4>Rush week is a series of events we put on so you can learn more about Sigma Phi Delta. Our next rush will be week 2 of Winter 2024. Stay tuned for event details!</h4>
+<h4>Rush week is a series of events we put on so you can learn more about Sigma Phi Delta. Our next rush will be week 2 of Winter 2026. Stay tuned for event details!</h4>
 <div class="row">
     <div>
-        <h3>Monday 9/29: BBQ @ Diablo Grilling Area</h3>
+        <h3>Monday 1/12: BBQ @ NOMO</h3>
         <ul>
             <li>Time: 6 - 8pm</li>
             <li>Come get free BBQ, meet the bros, and learn more about Sigma Phi Delta.</li>
         </ul>
     </div>
     <div>
-        <h3>Tuesday 9/30: Game Night @ The Island (Meet @ the PAC for rides)</h3>
-        <ul>
-            <li>Time: 6 - 8pm, meet at PAC</li>
-            <li>Come play games, hang out with us, and have fun at one of our fraternity homes.</li>
-        </ul>
-    </div>
-    <div>
-        <h3>Wednesday 10/1: Sports Day @ Mott Volleyball Courts</h3>
+        <h3>Tuesday 1/13: SPORTS NIGHT @ DOERR</h3>
         <ul>
             <li>Time: 6 - 8pm</li>
-            <li>Play bowling with us for free! Show off your skills or lack of skills, we don't judge.</li>
+            <li>Come play games, hang out with us, and have fun.</li>
         </ul>
     </div>
     <div>
-        <h3>Thursday 10/2: Professional Night @ The Castle (Meet @ the PAC for rides)</h3>
+        <h3>Wednesday 1/14: GAME NIGHT @ THE ISLAND (Meet @ the PAC for rides)</h3>
+        <ul>
+            <li>Time: 6 - 8pm, meet at PAC</li>
+            <li>Come play games, hang out with us and have fun at one of the faternatie's houses.</li>
+        </ul>
+    </div>
+    <div>
+        <h3>Thursday 1/15: Professional Night @ The Castle (Meet @ the PAC for rides)</h3>
         <ul>
             <li>Time: 6 - 8pm, meet at PAC</li>
             <li>As we are a professional engineering fraternity, we have many brothers and alumni working in industry. This night is a career fair style professional day to share what we've learned and how we can help you in your professional career.</li>
@@ -63,11 +63,11 @@ nav-menu: true
             <li>We will be inviting rushees back to go through the next stages of our process.</li>
         </ul>
     </div>
-    <p><b>Please direct any questions to Recruitment Chairman Ivan Nieto</b></p>
+    <p><b>Please direct any questions to Recruitment Chairmen Carlo Delanni and Luke Wade</b></p>
     <br>
     <ul>
         <li>recruitment.spd.calpoly@gmail.com</li>
-        <li>(720) 878-5731</li>
+        <li>(206) 698-6998 and (707) 227-4535</li>
     </ul>
 </div>
 
