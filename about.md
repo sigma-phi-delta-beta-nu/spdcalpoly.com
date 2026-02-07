@@ -270,7 +270,6 @@ nav-menu: true
 				<ul>
 					<li>Arnav Banthia </li>
 					<li>Aiden Hall</li>
-					<li>Ashvir Singh</li>
 					<li>Benicio Cristofalo</li>
 					<li>Christopher Sheehan </li>
 					<li>Jake Romag</li>
