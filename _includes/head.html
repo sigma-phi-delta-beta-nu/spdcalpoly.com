@@ -2,6 +2,15 @@
 	<title>{{ site.title }}</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!-- SEO DESCRIPTION (THIS FIXES GOOGLE SNIPPET) -->
+	{% if page.description %}
+	<meta name="description" content="{{ page.description | strip_html | strip_newlines | escape }}">
+	<meta property="og:description" content="{{ page.description | strip_html | strip_newlines | escape }}">
+	{% elsif site.description %}
+	<meta name="description" content="{{ site.description | strip_html | strip_newlines | escape }}">
+	<meta property="og:description" content="{{ site.description | strip_html | strip_newlines | escape }}">
+	{% endif %}
+
 	<!--[if lte IE 8]><script src="{{ "assets/js/ie/html5shiv.js" | relative_url }}"></script><![endif]-->
 	<link rel="stylesheet" href="{{ "assets/css/main.css" | relative_url }}" />
 	<!--[if lte IE 9]><link rel="stylesheet" href="{{ "assets/css/ie9.css" | relative_url }}" /><![endif]-->
