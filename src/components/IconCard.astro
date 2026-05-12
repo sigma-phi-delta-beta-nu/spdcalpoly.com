@@ -1,0 +1,26 @@
+---
+import Arrow from "./icons/Arrow.astro";
+interface Props {
+  href: string;
+  label: string;
+  description: string;
+}
+const { href, label, description } = Astro.props;
+---
+<a href={href} class="icon-card group block bg-ivory border border-ink/10 px-7 py-6 rounded relative overflow-hidden shadow-plate">
+  <div class="flex items-center justify-between gap-5">
+    <div class="flex items-center gap-6 flex-1">
+      <div class="text-gold shrink-0 w-24 flex justify-center">
+        <slot name="icon" />
+      </div>
+      <div>
+        <h3 class="text-[0.96rem] text-ink font-extrabold tracking-[0.08em] uppercase mb-2">{label}</h3>
+        <p class="text-[0.86rem] text-ink/75 leading-relaxed max-w-[190px]">{description}</p>
+      </div>
+    </div>
+    <div class="text-gold">
+      <Arrow class="arrow" size={20} />
+    </div>
+  </div>
+  <span class="absolute left-0 bottom-0 h-[2px] w-0 bg-gold transition-all duration-500 group-hover:w-full"></span>
+</a>

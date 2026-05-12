@@ -1,0 +1,99 @@
+---
+import Base from "../layouts/Base.astro";
+import OfficerTable from "../components/OfficerTable.astro";
+import CrestSmall from "../components/icons/CrestSmall.astro";
+import SocialIcons from "../components/icons/SocialIcons.astro";
+import { elected, appointed } from "../data/officers";
+import { site } from "../data/site";
+
+const heroImage = "/img_2023/sendoff_one.jpg";
+---
+
+<Base
+  title="Contact — Sigma Phi Delta Beta-Nu (Cal Poly SLO)"
+  description="Reach the elected and appointed officers of the Beta-Nu Chapter of Sigma Phi Delta at Cal Poly San Luis Obispo."
+  current="/contact"
+>
+  <!-- HERO -->
+  <section class="relative isolate hero-duotone overflow-hidden h-[46vh] min-h-[400px] max-h-[540px]">
+    <img src={heroImage} alt="Brothers at Senior Sendoff" class="absolute inset-0 h-full w-full object-cover object-center" />
+    <div class="relative z-10 mx-auto max-w-[1440px] px-6 md:px-10 h-full flex items-end pb-12 md:pb-14">
+      <div>
+        <p class="eyebrow text-gold-soft rise-in">Contact</p>
+        <h1 class="headline text-ivory mt-4 text-[clamp(2.5rem,6vw,5rem)] rise-in delay-1">
+          Get in <span class="headline-italic text-gold-soft">Touch</span>
+        </h1>
+        <p class="eyebrow text-ivory/65 mt-5 rise-in delay-2">We're here to connect.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BODY -->
+  <section class="relative py-20 md:py-24">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10 grid lg:grid-cols-12 gap-12">
+      <!-- left: tables -->
+      <div class="lg:col-span-8 space-y-12">
+        <OfficerTable rows={elected} heading="Elected Officials" />
+        <OfficerTable rows={appointed} heading="Appointed Officials" />
+      </div>
+
+      <!-- right: card -->
+      <aside class="lg:col-span-4">
+        <div class="sticky top-32 bg-ivory border border-ink/10 rounded-sm p-7 shadow-plate">
+          <div class="flex items-start gap-4">
+            <CrestSmall class="shrink-0" size={64} />
+            <div>
+              <p class="eyebrow text-crimson mb-1">{site.chapter}</p>
+              <p class="font-display text-2xl text-ink leading-none">{site.shortUniversity}</p>
+              <p class="text-sm text-ink/65 mt-1">{site.city}</p>
+            </div>
+          </div>
+
+          <div class="hairline my-6"></div>
+
+          <p class="eyebrow text-ink/55 mb-2">General Inquiries</p>
+          <a class="font-display text-xl text-crimson link-underline" href={`mailto:${site.email}`}>{site.email}</a>
+
+          <div class="hairline my-6"></div>
+
+          <p class="eyebrow text-ink/55 mb-3">Follow</p>
+          <div class="flex items-center gap-4 text-ink/75">
+            <a href={site.social.instagram} aria-label="Instagram" target="_blank" rel="noopener" class="hover:text-crimson transition-colors"><SocialIcons name="instagram" size={22} /></a>
+            <a href={site.social.facebook} aria-label="Facebook" target="_blank" rel="noopener" class="hover:text-crimson transition-colors"><SocialIcons name="facebook" size={22} /></a>
+            <a href={`mailto:${site.email}`} aria-label="Email" class="hover:text-crimson transition-colors"><SocialIcons name="mail" size={22} /></a>
+          </div>
+
+          <div class="hairline my-6"></div>
+
+          <p class="eyebrow text-ink/55 mb-3">Where to find us</p>
+          <a
+            href="https://maps.google.com/?q=California+Polytechnic+State+University,+San+Luis+Obispo,+CA"
+            target="_blank" rel="noopener"
+            class="block aspect-[5/3] relative overflow-hidden rounded-sm border border-ink/10 group"
+            aria-label="Open Cal Poly San Luis Obispo in Google Maps"
+          >
+            <!-- stylized SVG map -->
+            <svg viewBox="0 0 240 144" class="absolute inset-0 w-full h-full bg-ivory-warm" preserveAspectRatio="none" aria-hidden="true">
+              <rect width="240" height="144" fill="#F4EFE4" />
+              <path d="M0 80 L60 65 L130 78 L200 60 L240 72 V144 H0 Z" fill="rgba(200,169,81,0.18)" />
+              <path d="M0 100 L80 88 L160 102 L240 92 V144 H0 Z" fill="rgba(200,169,81,0.28)" />
+              <line x1="20" y1="40" x2="220" y2="40" stroke="rgba(20,20,20,0.18)" stroke-dasharray="4 4" />
+              <line x1="20" y1="120" x2="220" y2="120" stroke="rgba(20,20,20,0.18)" stroke-dasharray="4 4" />
+              <line x1="60" y1="20" x2="60" y2="130" stroke="rgba(20,20,20,0.15)" stroke-dasharray="3 5" />
+              <line x1="160" y1="20" x2="160" y2="130" stroke="rgba(20,20,20,0.15)" stroke-dasharray="3 5" />
+              <text x="14" y="32" font-family="Manrope" font-size="9" fill="#8E7635" letter-spacing="2">CAL POLY</text>
+              <text x="14" y="138" font-family="Manrope" font-size="8" fill="#8E7635" letter-spacing="2">SAN LUIS OBISPO</text>
+            </svg>
+            <!-- pin -->
+            <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-full text-crimson transition-transform duration-500 group-hover:-translate-y-[120%]">
+              <svg width="28" height="34" viewBox="0 0 28 34" fill="currentColor" aria-hidden="true">
+                <path d="M14 0 C 6 0 0 6 0 14 C 0 24 14 34 14 34 S 28 24 28 14 C 28 6 22 0 14 0 Z" />
+                <circle cx="14" cy="14" r="5" fill="#FAF7F1" />
+              </svg>
+            </span>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,24 @@
+---
+interface Props { class?: string; size?: number; strokeWidth?: number; }
+const { class: cls = "", size = 56, strokeWidth = 1.4 } = Astro.props;
+---
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  width={size}
+  height={size}
+  fill="none"
+  stroke="currentColor"
+  stroke-width={strokeWidth}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={cls}
+  aria-hidden="true"
+>
+  <!-- left wing -->
+  <path d="M22 32 Q10 30 4 36 Q12 34 18 38 Q12 38 8 44 Q16 40 22 44" />
+  <!-- right wing -->
+  <path d="M42 32 Q54 30 60 36 Q52 34 46 38 Q52 38 56 44 Q48 40 42 44" />
+  <!-- bolt -->
+  <path d="M34 14 L26 34 H34 L28 50 L40 30 H32 L36 14 Z" />
+</svg>

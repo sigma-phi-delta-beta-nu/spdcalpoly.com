@@ -1,0 +1,429 @@
+/* ---------- Fonts (must precede @tailwind) ---------- */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Tokens ---------- */
+:root {
+  --crimson: #a4151e;
+  --crimson-deep: #8b0000;
+  --crimson-dark: #5c0a0f;
+  --crimson-ink: #3a0608;
+  --gold: #c8a951;
+  --gold-soft: #d9be6e;
+  --gold-dim: #8e7635;
+  --ink: #141414;
+  --ink-soft: #1e1e1e;
+  --ivory: #faf7f1;
+  --ivory-warm: #f4efe4;
+  --ivory-edge: #e8e1d0;
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    background: var(--ivory);
+    color: var(--ink);
+  }
+
+  body {
+    font-family: "Manrope", system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    background-color: var(--ivory);
+    color: var(--ink);
+    -webkit-font-feature-settings: "ss01", "cv01", "cv11";
+            font-feature-settings: "ss01", "cv01", "cv11";
+    overflow-x: hidden;
+  }
+
+  .font-display {
+    font-family: "Fraunces", "Cormorant Garamond", "Playfair Display", Georgia,
+      serif;
+    font-feature-settings: "ss01", "ss03";
+    font-variation-settings: "SOFT" 50, "WONK" 0;
+  }
+
+  ::selection {
+    background: var(--crimson);
+    color: var(--ivory);
+  }
+}
+
+/* ---------- Reusable elements ---------- */
+.eyebrow {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(200, 169, 81, 0.5),
+    transparent
+  );
+}
+
+.divider-gold {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  display: inline-block;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.95rem 1.6rem;
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 0.3s, color 0.3s, box-shadow 0.4s;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary {
+  background: var(--crimson);
+  color: var(--ivory);
+  box-shadow: inset 0 -2px 0 var(--crimson-dark),
+    0 18px 40px -22px rgba(164, 21, 30, 0.6);
+}
+.btn-primary:hover {
+  background: var(--crimson-deep);
+  transform: translateY(-2px);
+  box-shadow: inset 0 -2px 0 var(--crimson-dark),
+    0 30px 60px -28px rgba(164, 21, 30, 0.7);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.btn-ghost:hover {
+  background: rgba(200, 169, 81, 0.08);
+  color: var(--gold-soft);
+}
+.btn-ghost-ivory {
+  background: transparent;
+  color: var(--ivory);
+  border: 1px solid rgba(250, 247, 241, 0.4);
+}
+.btn-ghost-ivory:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* shimmer on primary */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.16) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.9s ease;
+}
+.btn-primary:hover::after {
+  transform: translateX(120%);
+}
+
+/* ---------- Crimson duotone overlay for photos ---------- */
+.duotone {
+  position: relative;
+  isolation: isolate;
+}
+.duotone img {
+  filter: grayscale(0.4) contrast(1.05);
+}
+.duotone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(58, 6, 8, 0.35), rgba(58, 6, 8, 0.7)),
+    radial-gradient(
+      ellipse at 30% 50%,
+      rgba(164, 21, 30, 0.45),
+      rgba(20, 20, 20, 0.85) 75%
+    );
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+.duotone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(20, 20, 20, 0.5));
+  z-index: 2;
+}
+.duotone > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* ---------- Heavier hero duotone with crimson cast ---------- */
+/* No `position` here on purpose: the elements that carry .hero-duotone already
+   establish a positioning context (sections use Tailwind `relative`, the
+   recruitment collage uses `absolute`). Setting position here would override
+   that `absolute` and break the overlay stacking. */
+.hero-duotone {
+  isolation: isolate;
+  background-color: var(--crimson-ink);
+}
+.hero-duotone img {
+  filter: grayscale(1) contrast(1.12) brightness(0.52);
+}
+.hero-duotone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+      180deg,
+      rgba(92, 10, 15, 0.5) 0%,
+      rgba(58, 6, 8, 0.82) 100%
+    ),
+    radial-gradient(
+      ellipse at 68% 22%,
+      rgba(164, 21, 30, 0.5),
+      transparent 62%
+    ),
+    linear-gradient(
+      100deg,
+      rgba(20, 20, 20, 0.55) 0%,
+      rgba(20, 20, 20, 0.12) 45%,
+      rgba(20, 20, 20, 0.42) 100%
+    );
+}
+
+/* ---------- Section paper texture ---------- */
+.paper {
+  background-color: var(--ivory);
+  background-image:
+    radial-gradient(
+      ellipse at top right,
+      rgba(200, 169, 81, 0.06),
+      transparent 60%
+    ),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.05  0 0 0 0 0.04  0 0 0 0.045 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- Animated entrance helpers (CSS only) ---------- */
+.rise-in {
+  animation: riseIn 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.rise-in.delay-1 {
+  animation-delay: 0.12s;
+}
+.rise-in.delay-2 {
+  animation-delay: 0.24s;
+}
+.rise-in.delay-3 {
+  animation-delay: 0.36s;
+}
+.rise-in.delay-4 {
+  animation-delay: 0.48s;
+}
+.rise-in.delay-5 {
+  animation-delay: 0.6s;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.fade-in {
+  animation: fadeIn 1.4s ease both;
+}
+
+/* ---------- Pledge-class timeline rail ---------- */
+.timeline-rail {
+  background: linear-gradient(
+    90deg,
+    rgba(200, 169, 81, 0) 0%,
+    rgba(200, 169, 81, 0.6) 8%,
+    rgba(200, 169, 81, 0.6) 92%,
+    rgba(200, 169, 81, 0) 100%
+  );
+}
+
+/* ---------- Nav underline animation ---------- */
+.nav-link {
+  position: relative;
+  padding-bottom: 4px;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 0;
+  height: 1.5px;
+  background: var(--gold);
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), left 0.4s;
+}
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  width: 100%;
+  left: 0;
+}
+
+/* ---------- Iconcard hover ---------- */
+.icon-card {
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.5s, border-color 0.5s;
+}
+.icon-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -36px rgba(20, 20, 20, 0.25);
+  border-color: rgba(200, 169, 81, 0.55);
+}
+.icon-card .arrow {
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.icon-card:hover .arrow {
+  transform: translateX(4px);
+}
+
+.rush-cta-panel {
+  background:
+    linear-gradient(90deg, rgba(58, 6, 8, 0.98), rgba(92, 10, 15, 0.94)),
+    radial-gradient(circle at 78% 12%, rgba(200, 169, 81, 0.13), transparent 34%),
+    linear-gradient(135deg, var(--crimson-ink), var(--crimson-deep) 62%, var(--crimson-dark));
+  box-shadow: inset 0 0 0 1px rgba(250, 247, 241, 0.1),
+    0 28px 70px -46px rgba(58, 6, 8, 0.7);
+}
+
+/* ---------- Lapidary headline tweaks ---------- */
+.headline {
+  font-family: "Fraunces", "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-variation-settings: "SOFT" 30, "WONK" 0, "opsz" 144;
+  letter-spacing: -0.025em;
+  line-height: 0.96;
+}
+.headline-italic {
+  font-style: italic;
+  font-variation-settings: "SOFT" 80, "WONK" 1, "opsz" 144;
+}
+
+/* ---------- Subtle vignette ---------- */
+.vignette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(20, 20, 20, 0.4) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---------- SVG line-art draw on view ---------- */
+.draw-line path,
+.draw-line line,
+.draw-line polyline {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawIn 2.8s ease forwards;
+}
+@keyframes drawIn {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---------- Hide scrollbars on horizontal scroll rows ---------- */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ---------- Table tweaks ---------- */
+.officer-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+.officer-table thead th {
+  background: var(--crimson);
+  color: var(--ivory);
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.1rem;
+  text-align: left;
+}
+.officer-table tbody td {
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.07);
+  font-size: 0.95rem;
+}
+.officer-table tbody tr:nth-child(even) td {
+  background: rgba(244, 239, 228, 0.55);
+}
+.officer-table tbody tr:hover td {
+  background: rgba(200, 169, 81, 0.08);
+}
+.officer-table a {
+  color: var(--crimson);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(164, 21, 30, 0.4);
+}
+.officer-table a:hover {
+  color: var(--crimson-deep);
+  border-bottom-color: var(--crimson-deep);
+}
+
+/* ---------- Underline link ---------- */
+.link-underline {
+  background-image: linear-gradient(var(--crimson), var(--crimson));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  padding-bottom: 2px;
+  transition: background-size 0.4s;
+}
+.link-underline:hover {
+  background-size: 100% 2px;
+}

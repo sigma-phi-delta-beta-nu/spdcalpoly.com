@@ -1,0 +1,32 @@
+---
+interface Props { class?: string; size?: number; strokeWidth?: number; }
+const { class: cls = "", size = 56, strokeWidth = 1.4 } = Astro.props;
+---
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  width={size}
+  height={size}
+  fill="none"
+  stroke="currentColor"
+  stroke-width={strokeWidth}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={cls}
+  aria-hidden="true"
+>
+  <!-- hinge -->
+  <circle cx="32" cy="12" r="2.5" />
+  <line x1="32" y1="9.5" x2="32" y2="6" />
+  <!-- left leg -->
+  <line x1="32" y1="14.5" x2="16" y2="54" />
+  <!-- right leg -->
+  <line x1="32" y1="14.5" x2="48" y2="54" />
+  <!-- crossbar -->
+  <path d="M22 38 Q32 32 42 38" />
+  <!-- pencil tips -->
+  <line x1="16" y1="54" x2="14" y2="58" />
+  <line x1="48" y1="54" x2="50" y2="58" />
+  <!-- arc on the page -->
+  <path d="M14 58 Q32 70 50 58" stroke-dasharray="2 3" opacity="0.55" />
+</svg>

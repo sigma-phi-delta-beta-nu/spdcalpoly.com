@@ -1,0 +1,87 @@
+---
+import Base from "../layouts/Base.astro";
+import BrotherCard from "../components/BrotherCard.astro";
+import CastleIcon from "../components/icons/CastleIcon.astro";
+import { brothers } from "../data/brothers";
+import { pledgeClasses } from "../data/pledge-classes";
+import { execHighlights } from "../data/officers";
+import { site } from "../data/site";
+
+// One section per pledge class that has members on the roster, oldest first
+// (Founding → current), matching the order in pledge-classes.ts.
+const classSections = pledgeClasses
+  .map((p) => ({
+    heading: p.name,
+    letter: p.letter,
+    members: brothers.filter((b) => b.classLetter === p.letter),
+  }))
+  .filter((s) => s.members.length > 0);
+
+const totalBrothers = brothers.length;
+---
+
+<Base
+  title="The Brotherhood — Sigma Phi Delta Beta-Nu (Cal Poly SLO)"
+  description="Meet the brothers of the Beta-Nu Chapter of Sigma Phi Delta at Cal Poly San Luis Obispo — executive board, active brothers, and pledge classes."
+  navVariant="ivory"
+  current="/brothers"
+>
+  <!-- HEADER -->
+  <section class="relative pt-32 md:pt-40 pb-12 paper overflow-hidden">
+    <div class="pointer-events-none absolute right-6 -top-6 text-gold/15 hidden md:block">
+      <CastleIcon size={360} strokeWidth={0.8} />
+    </div>
+
+    <div class="relative mx-auto max-w-[1440px] px-6 md:px-10">
+      <p class="eyebrow text-crimson mb-3 rise-in">Members</p>
+      <h1 class="headline text-ink text-[clamp(3rem,8vw,6.4rem)] leading-[0.96] rise-in delay-1">
+        The <span class="headline-italic text-crimson">Brotherhood</span>
+      </h1>
+      <p class="mt-6 max-w-2xl text-ink/75 leading-relaxed text-lg rise-in delay-2">
+        Sigma Phi Delta is a brotherhood built on excellence, integrity, and lifelong friendship. Meet the men of the {site.chapter} at {site.shortUniversity}.
+      </p>
+    </div>
+  </section>
+
+  <!-- EXECUTIVE BOARD -->
+  <section class="relative py-16 md:py-20">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="flex items-center gap-4 mb-6">
+        <h2 class="eyebrow text-crimson">Executive Board</h2>
+        <span class="h-px flex-1 bg-crimson/30"></span>
+      </div>
+
+      <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-5">
+        {execHighlights.map((e) => (
+          <BrotherCard
+            name={e.name}
+            detail={e.title}
+            classLetter={e.detail}
+            variant="exec"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative pb-28 space-y-14">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <p class="max-w-3xl text-ink/65 leading-relaxed">
+        Every pledge class of the {site.chapter} — {totalBrothers} brothers from the Founding Class to today — organized by class.
+      </p>
+    </div>
+    {classSections.map((section) => (
+      <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+        <div class="flex items-baseline gap-4 mb-6">
+          <h2 class="eyebrow text-crimson">{section.heading} &nbsp;·&nbsp; {section.letter}</h2>
+          <span class="h-px flex-1 bg-crimson/30"></span>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          {section.members.map((b) => (
+            <BrotherCard {...b} />
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+</Base>

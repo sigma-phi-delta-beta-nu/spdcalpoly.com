@@ -1,0 +1,176 @@
+---
+import Base from "../layouts/Base.astro";
+import IconCard from "../components/IconCard.astro";
+import CastleIcon from "../components/icons/CastleIcon.astro";
+import CompassIcon from "../components/icons/CompassIcon.astro";
+import RetortIcon from "../components/icons/RetortIcon.astro";
+import ThunderboltIcon from "../components/icons/ThunderboltIcon.astro";
+import Arrow from "../components/icons/Arrow.astro";
+import { site } from "../data/site";
+
+const heroImage = "/img_2023/camping_one.JPG";
+---
+
+<Base
+  title={`${site.fullName} — Cal Poly SLO`}
+  description={`${site.tagline}. ${site.chapter} at ${site.shortUniversity} — engineering brotherhood since 1924.`}
+  current="/"
+>
+  <!-- ============================================= HERO -->
+  <section class="relative isolate h-[88vh] min-h-[640px] max-h-[940px] hero-duotone overflow-hidden">
+    <img
+      src={heroImage}
+      alt="Brothers of Sigma Phi Delta Beta-Nu Chapter on the Cal Poly San Luis Obispo campus"
+      class="absolute inset-0 h-full w-full object-cover object-center"
+      loading="eager"
+      fetchpriority="high"
+    />
+
+    <div class="relative z-10 mx-auto max-w-[1440px] px-6 md:px-10 h-full flex flex-col justify-end pb-14 md:pb-16 pt-28">
+      <div class="max-w-3xl">
+        <p class="eyebrow text-gold-soft rise-in">Sigma · Phi · Delta &nbsp; — &nbsp; Beta-Nu Chapter</p>
+
+        <h1 class="headline text-ivory mt-4 text-[clamp(2.3rem,5.4vw,4.4rem)] leading-[0.98] rise-in delay-1">
+          The Premier <br /><span class="headline-italic text-gold-soft">International Fraternity</span><br />for Engineers
+        </h1>
+
+        <p class="mt-6 max-w-xl text-ivory/85 text-sm md:text-base leading-relaxed rise-in delay-2">
+          The Beta-Nu Chapter at Cal Poly San Luis Obispo strives to uphold the traditions of its Brotherhood, passed down through the generations.
+        </p>
+
+        <p class="mt-3 eyebrow text-ivory/55 tracking-[0.24em] rise-in delay-2">
+          Beta-Nu Chapter &nbsp;·&nbsp; Cal Poly San Luis Obispo
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4 rise-in delay-3">
+          <a href="/recruitment" class="btn btn-primary">Rush SPD <Arrow size={16} /></a>
+          <a href="/about" class="btn btn-ghost-ivory">Learn more</a>
+        </div>
+      </div>
+
+      <!-- bottom-right motto -->
+      <div class="hidden lg:flex absolute right-10 bottom-16 items-end gap-4 text-right z-10">
+        <div class="text-gold-soft">
+          <CompassIcon size={48} strokeWidth={1.1} />
+        </div>
+        <div>
+          <p class="font-display text-2xl text-gold-soft italic">Pro Bono Professionis</p>
+          <p class="eyebrow text-ivory/55 mt-1">{site.mottoTranslation}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- subtle scroll cue -->
+    <div class="absolute left-1/2 bottom-6 -translate-x-1/2 z-10 text-ivory/60 text-[0.65rem] tracking-[0.32em] uppercase flex flex-col items-center gap-2">
+      <span>Scroll</span>
+      <span class="block h-8 w-px bg-ivory/30 animate-pulse"></span>
+    </div>
+  </section>
+
+  <!-- ============================================= 4-CARD ROW -->
+  <section class="relative py-24 md:py-28">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="grid md:grid-cols-4 gap-5">
+        <IconCard
+          href="/about"
+          label="About Us"
+          description="Our history, principles, and why engineers have built a brotherhood here since 1924."
+        >
+          <CastleIcon slot="icon" size={42} />
+        </IconCard>
+
+        <IconCard
+          href="/recruitment"
+          label="Recruitment"
+          description="What rush is, what to expect, and how to join Sigma Phi Delta this winter."
+        >
+          <CompassIcon slot="icon" size={42} />
+        </IconCard>
+
+        <IconCard
+          href="/brothers"
+          label="Our Brothers"
+          description="Meet the engineers who lead, build, and represent Beta-Nu today."
+        >
+          <RetortIcon slot="icon" size={42} />
+        </IconCard>
+
+        <IconCard
+          href="/contact"
+          label="Contact"
+          description="Officer contacts, chapter inquiries, and the easiest way to reach us."
+        >
+          <ThunderboltIcon slot="icon" size={42} />
+        </IconCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================= QUOTE BAND -->
+  <section class="relative bg-ink text-ivory py-24 md:py-32 overflow-hidden">
+    <!-- decorative compass mark -->
+    <div class="pointer-events-none absolute left-10 top-10 text-gold/15">
+      <CompassIcon size={120} strokeWidth={0.9} />
+    </div>
+    <div class="pointer-events-none absolute right-10 bottom-10 text-gold/15">
+      <RetortIcon size={120} strokeWidth={0.9} />
+    </div>
+
+      <div class="relative mx-auto max-w-3xl px-6 md:px-10 text-center">
+        <div class="divider-gold mx-auto mb-8 opacity-70"></div>
+        <blockquote class="font-display text-[clamp(1.7rem,3vw,2.6rem)] leading-snug text-ivory">
+          <span class="headline-italic text-gold-soft">Pro Bono Professionis</span>
+        </blockquote>
+      <p class="mt-7 eyebrow text-gold tracking-[0.26em]">{site.mottoTranslation}</p>
+    </div>
+  </section>
+
+  <!-- ============================================= 3-COLUMN STORY -->
+  <section class="relative py-24 md:py-28">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="grid lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-4">
+          <p class="eyebrow text-crimson mb-3">Who we are</p>
+          <h2 class="font-display text-4xl md:text-5xl text-ink leading-[1] tracking-tightest">
+            A brotherhood<br />
+            <span class="headline-italic">built by engineers</span>,<br />
+            for engineers.
+          </h2>
+        </div>
+
+        <div class="lg:col-span-4 text-ink/80 leading-relaxed text-[1.02rem]">
+          <p>Sigma Phi Delta is a fraternity of engineers devoted to bettering engineering education and industry, as well as its men in membership.</p>
+          <p class="mt-4">Our priorities involve professionalism and upholding our Code of Ethics throughout both pledging and active life.</p>
+        </div>
+
+        <div class="lg:col-span-4 text-ink/80 leading-relaxed text-[1.02rem]">
+          <p>Here in San Luis Obispo, California, the Beta-Nu Chapter of Sigma Phi Delta strives to uphold the traditions of its Brotherhood, passed down through the generations.</p>
+          <p class="mt-4">
+            <a href="/about" class="link-underline text-crimson font-semibold inline-flex items-center gap-2">Read our principles <Arrow size={14} /></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================= RUSH CTA STRIP -->
+  <section id="rush-cta" class="relative scroll-mt-24">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10 pb-24 md:pb-28">
+      <div class="rush-cta-panel relative overflow-hidden rounded-sm">
+        <div class="absolute -right-10 -top-10 text-ivory/10">
+          <CastleIcon size={280} strokeWidth={0.7} />
+        </div>
+        <div class="relative px-8 md:px-14 py-14 md:py-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div class="max-w-2xl">
+            <p class="eyebrow text-gold-soft mb-3">Winter Rush 2026 · Week 2</p>
+            <h2 class="font-display text-4xl md:text-5xl text-ivory leading-[1.02]">
+              Five nights to meet <span class="headline-italic text-gold-soft">your future brothers.</span>
+            </h2>
+            <p class="mt-4 text-ivory/90 max-w-xl">Open events Monday through Thursday: BBQ, sports night, game night, and a professional night with brothers and alumni. Invite-only events follow Friday and Saturday.</p>
+          </div>
+          <a href="/recruitment" class="btn btn-ghost-ivory bg-ink/20 border-ivory/65 whitespace-nowrap self-start md:self-end">See the schedule <Arrow size={14} /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

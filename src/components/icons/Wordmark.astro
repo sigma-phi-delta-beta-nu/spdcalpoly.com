@@ -1,0 +1,10 @@
+---
+import CastleIcon from "./CastleIcon.astro";
+
+interface Props { class?: string; }
+const { class: cls = "" } = Astro.props;
+---
+<a href="/" class:list={["inline-flex items-center gap-3 group", cls]} aria-label="Sigma Phi Delta — Beta-Nu Chapter">
+  <CastleIcon size={32} class="text-gold transition-transform duration-500 group-hover:rotate-[-2deg]" />
+  <span class="font-display text-3xl tracking-tight text-gold leading-none translate-y-[1px]">ΣΦΔ</span>
+</a>

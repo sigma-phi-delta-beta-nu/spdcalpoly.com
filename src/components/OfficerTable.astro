@@ -1,0 +1,37 @@
+---
+import type { Officer } from "../data/officers";
+interface Props { rows: Officer[]; heading: string; }
+const { rows, heading } = Astro.props;
+---
+<div>
+  <h3 class="font-display text-2xl text-ink mb-4 leading-none">{heading}</h3>
+  <div class="overflow-x-auto -mx-2 px-2">
+    <table class="officer-table">
+      <thead>
+        <tr>
+          <th class="w-[44%]">Position</th>
+          <th class="w-[30%]">Name</th>
+          <th>Email</th>
+          <th class="w-10"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((r) => (
+          <tr>
+            <td class="font-medium text-ink">{r.position}</td>
+            <td class="text-ink/80">{r.name}</td>
+            <td><a href={`mailto:${r.email}`}>{r.email}</a></td>
+            <td class="text-right">
+              <a href={`mailto:${r.email}`} aria-label={`Email ${r.name}`} class="inline-flex text-gold hover:text-crimson">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                  <path d="M4 6h16v12H4z" />
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
+              </a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>

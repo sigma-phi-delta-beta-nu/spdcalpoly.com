@@ -1,0 +1,62 @@
+---
+import { site } from "../data/site";
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+const {
+  title,
+  description = site.description,
+  image = "/og-default.jpg",
+  canonical,
+  noindex = false,
+} = Astro.props;
+
+const path = Astro.url.pathname;
+const canonicalURL =
+  canonical ?? new URL(path === "/" ? "/" : path.replace(/\/$/, ""), site.url).toString();
+const ogImage = new URL(image, site.url).toString();
+const mdPath = path === "/" ? "/index.md" : path.replace(/\/$/, "") + ".md";
+const mdAlternate = new URL(mdPath, site.url).toString();
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+{noindex && <meta name="robots" content="noindex,nofollow" />}
+
+<!-- Markdown mirror for AI agents -->
+<link rel="alternate" type="text/markdown" href={mdAlternate} />
+<link rel="alternate" type="application/llms.txt" href={new URL("/llms.txt", site.url).toString()} />
+
+<!-- Theme & color -->
+<meta name="theme-color" content="#141414" />
+<meta name="color-scheme" content="light" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={site.fullName} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content={ogImage} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Preconnect to Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

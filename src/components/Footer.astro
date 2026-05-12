@@ -1,0 +1,50 @@
+---
+import { site } from "../data/site";
+import CrestSmall from "./icons/CrestSmall.astro";
+import HillsLine from "./icons/HillsLine.astro";
+import CompassIcon from "./icons/CompassIcon.astro";
+import SocialIcons from "./icons/SocialIcons.astro";
+---
+
+<footer class="relative isolate overflow-hidden bg-ink text-ivory">
+  <!-- gold hairline -->
+  <div class="h-px w-full bg-gradient-to-r from-transparent via-gold/40 to-transparent"></div>
+
+  <!-- decorative line-art landscape -->
+  <div class="pointer-events-none absolute inset-x-0 bottom-0 text-gold/25">
+    <HillsLine class="w-full h-20" />
+  </div>
+  <CompassIcon class="pointer-events-none absolute right-6 top-8 hidden md:block text-gold/20" size={104} strokeWidth={1} />
+
+  <div class="relative mx-auto max-w-[1440px] px-6 md:px-10 py-8">
+    <div class="grid gap-8 md:grid-cols-12 items-center">
+      <!-- crest + motto -->
+      <div class="md:col-span-5 flex items-center gap-6">
+        <CrestSmall class="shrink-0" size={62} />
+        <div>
+          <p class="font-display text-[1.25rem] text-gold tracking-wide">{site.motto}</p>
+          <p class="eyebrow text-ivory/65 mt-2">{site.mottoTranslation}</p>
+        </div>
+      </div>
+
+      <!-- founded badge -->
+      <div class="md:col-span-2 flex md:justify-center">
+        <div class="hidden md:flex h-24 w-px bg-gold/35"></div>
+        <div class="md:hidden text-gold">
+          <span class="font-display text-xl">1924</span>
+        </div>
+      </div>
+
+      <!-- contact -->
+      <div class="md:col-span-5">
+        <a href={`mailto:${site.email}`} class="font-display text-xl text-gold link-underline">{site.email}</a>
+        <p class="text-xs text-ivory/65 mt-3 tracking-[0.2em] uppercase">{site.name} · {site.chapter}<br/>{site.shortUniversity}</p>
+        <div class="mt-5 flex items-center gap-8 text-gold">
+          <a href={site.social.instagram} aria-label="Instagram" class="hover:text-gold transition-colors" target="_blank" rel="noopener"><SocialIcons name="instagram" /></a>
+          <a href={site.social.facebook} aria-label="Facebook" class="hover:text-gold transition-colors" target="_blank" rel="noopener"><SocialIcons name="facebook" /></a>
+          <a href={`mailto:${site.email}`} aria-label="Email" class="hover:text-gold transition-colors"><SocialIcons name="mail" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

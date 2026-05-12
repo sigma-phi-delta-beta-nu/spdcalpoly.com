@@ -1,0 +1,19 @@
+---
+interface Props { class?: string; size?: number; strokeWidth?: number; }
+const { class: cls = "", size = 56 } = Astro.props;
+---
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 209 251"
+  width={size}
+  height={Math.round(size * 1.2)}
+  fill="currentColor"
+  class={cls}
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M55 4H74L77 43H99L103 4H122L125 43H146L150 4H168L171 43H177L181 61H158L175 226H202L207 247H2L7 228H35L52 61H31L34 43H52L55 4ZM67 70H92V121H67V70ZM113 160H139V222H113V160Z"
+  />
+</svg>
