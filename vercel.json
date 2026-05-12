@@ -1,0 +1,78 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        { "type": "header", "key": "accept", "value": ".*(text|application)/markdown.*" }
+      ],
+      "destination": "/index.md"
+    },
+    {
+      "source": "/",
+      "has": [
+        { "type": "header", "key": "user-agent", "value": "(?i).*(GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|Claude-Web|anthropic-ai|Claude-User|CCBot|Google-Extended|PerplexityBot|Perplexity-User|Applebot-Extended|Bytespider|Meta-ExternalAgent|cohere-ai|YouBot).*" }
+      ],
+      "destination": "/index.md"
+    },
+    {
+      "source": "/:path(about|recruitment|brothers|contact)",
+      "has": [
+        { "type": "header", "key": "accept", "value": ".*(text|application)/markdown.*" }
+      ],
+      "destination": "/:path.md"
+    },
+    {
+      "source": "/:path(about|recruitment|brothers|contact)",
+      "has": [
+        { "type": "header", "key": "user-agent", "value": "(?i).*(GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|Claude-Web|anthropic-ai|Claude-User|CCBot|Google-Extended|PerplexityBot|Perplexity-User|Applebot-Extended|Bytespider|Meta-ExternalAgent|cohere-ai|YouBot).*" }
+      ],
+      "destination": "/:path.md"
+    },
+    { "source": "/sitemap.xml", "destination": "/sitemap-index.xml" },
+    {
+      "source": "/:path*",
+      "has": [
+        { "type": "header", "key": "accept", "value": ".*(text|application)/markdown.*" }
+      ],
+      "destination": "/404.md"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        { "type": "header", "key": "user-agent", "value": "(?i).*(GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|Claude-Web|anthropic-ai|Claude-User|CCBot|Google-Extended|PerplexityBot|Perplexity-User|Applebot-Extended|Bytespider|Meta-ExternalAgent|cohere-ai|YouBot).*" }
+      ],
+      "destination": "/404.md"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/llms.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=300" }
+      ]
+    },
+    {
+      "source": "/sitemap.md",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" }
+      ]
+    },
+    {
+      "source": "/(.*).md",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Vary", "value": "Accept, User-Agent" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Vary", "value": "Accept, User-Agent" }
+      ]
+    }
+  ]
+}

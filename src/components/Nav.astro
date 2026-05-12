@@ -1,0 +1,84 @@
+---
+import { nav, site } from "../data/site";
+import Wordmark from "./icons/Wordmark.astro";
+
+interface Props {
+  variant?: "dark" | "ivory";
+  current?: string; // pathname e.g. "/about"
+}
+const { variant = "dark", current = "/" } = Astro.props;
+
+const isDark = variant === "dark";
+---
+
+<header
+  class:list={[
+    "relative z-30 bg-ink text-ivory border-b border-gold/45",
+  ]}
+>
+  <div class="relative bg-[radial-gradient(circle_at_20%_0%,rgba(200,169,81,0.08),transparent_30%),linear-gradient(90deg,#111,#191919)]">
+    <div class="mx-auto flex h-[64px] max-w-[1480px] items-center justify-between px-6 md:px-12">
+      <div class="flex items-center gap-6">
+        <Wordmark class="text-gold" />
+        <span class:list={[
+          "hidden md:inline-block h-3 w-px",
+          isDark ? "bg-white/15" : "bg-white/15",
+        ]}></span>
+        <span class:list={[
+          "hidden md:inline-block eyebrow",
+          isDark ? "text-gold/80" : "text-gold/80",
+        ]}>{site.chapter}</span>
+      </div>
+
+      <nav class="hidden md:flex h-full items-center gap-12 text-[0.74rem] font-bold tracking-[0.24em] uppercase">
+        {nav.map((n) => (
+          <a
+            href={n.href}
+            class:list={[
+              "nav-link h-full inline-flex items-center transition-colors",
+              current === n.href ? "is-active text-gold" : "text-ivory/90 hover:text-gold",
+            ]}
+          >{n.label}</a>
+        ))}
+      </nav>
+
+      <button
+        type="button"
+        id="nav-toggle"
+        class:list={[
+          "md:hidden inline-flex h-10 w-10 items-center justify-center rounded-sm border transition-colors",
+          "border-white/15 text-ivory",
+        ]}
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Menu</span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <line x1="4" y1="8" x2="20" y2="8" />
+          <line x1="4" y1="16" x2="20" y2="16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="md:hidden hidden bg-ink text-ivory border-b border-white/5">
+    <div class="px-6 py-4 flex flex-col gap-3 text-sm tracking-[0.22em] uppercase">
+      {nav.map((n) => (
+        <a href={n.href} class={current === n.href ? "text-gold" : "text-ivory/85"}>{n.label}</a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  (() => {
+    const btn = document.getElementById("nav-toggle");
+    const menu = document.getElementById("mobile-menu");
+    if (!btn || !menu) return;
+    btn.addEventListener("click", () => {
+      const open = !menu.classList.contains("hidden") ? false : true;
+      menu.classList.toggle("hidden");
+      btn.setAttribute("aria-expanded", String(open));
+    });
+  })();
+</script>

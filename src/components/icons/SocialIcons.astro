@@ -1,0 +1,30 @@
+---
+interface Props { name: "instagram" | "facebook" | "linkedin" | "mail"; class?: string; size?: number; }
+const { name, class: cls = "", size = 20 } = Astro.props;
+---
+{name === "instagram" && (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class={cls} aria-hidden="true">
+    <rect x="3" y="3" width="18" height="18" rx="4" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
+  </svg>
+)}
+{name === "facebook" && (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class={cls} aria-hidden="true">
+    <path d="M15 4 H13 a3 3 0 0 0 -3 3 V10 H8 V13 H10 V21 H13 V13 H15.5 L16 10 H13 V8 a1 1 0 0 1 1 -1 H15 Z" />
+  </svg>
+)}
+{name === "linkedin" && (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class={cls} aria-hidden="true">
+    <rect x="3" y="3" width="18" height="18" rx="2.5" />
+    <line x1="7.5" y1="10" x2="7.5" y2="17" />
+    <circle cx="7.5" cy="7.5" r="0.6" fill="currentColor" />
+    <path d="M11.5 17 V10 M11.5 12.5 Q13 10 15 10 Q17 10 17 12.5 V17" />
+  </svg>
+)}
+{name === "mail" && (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class={cls} aria-hidden="true">
+    <rect x="3" y="5" width="18" height="14" rx="1.5" />
+    <path d="M3 6 L12 13 L21 6" />
+  </svg>
+)}

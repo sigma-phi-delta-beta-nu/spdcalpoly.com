@@ -1,0 +1,30 @@
+---
+interface Props { class?: string; size?: number; strokeWidth?: number; }
+const { class: cls = "", size = 56, strokeWidth = 1.4 } = Astro.props;
+---
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  width={size}
+  height={size}
+  fill="none"
+  stroke="currentColor"
+  stroke-width={strokeWidth}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={cls}
+  aria-hidden="true"
+>
+  <!-- neck -->
+  <path d="M26 10 H38" />
+  <path d="M28 10 V22 L16 50 a14 14 0 0 0 32 0 L36 22 V10" />
+  <!-- liquid level -->
+  <path d="M20 42 Q32 38 44 42" opacity="0.55" />
+  <!-- bubbles -->
+  <circle cx="26" cy="44" r="1.1" opacity="0.7" />
+  <circle cx="32" cy="48" r="0.9" opacity="0.6" />
+  <circle cx="37" cy="45" r="1.2" opacity="0.7" />
+  <!-- steam -->
+  <path d="M30 8 Q32 4 30 0" opacity="0.5" />
+  <path d="M34 8 Q36 4 34 0" opacity="0.5" />
+</svg>

@@ -1,29 +1,34 @@
-# =====================================================
-# Jekyll / GitHub Pages .gitignore
-# =====================================================
+# Astro build output
+dist/
+.astro/
 
-# Site output
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata/
+# Dependencies
+node_modules/
 
-# Ruby / Bundler
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+.env
+.env.production
+
+.DS_Store
+.vscode/
+.idea/
+
+# Legacy Jekyll (if built from `.legacy/`)
+.legacy/_site/
+.legacy/.sass-cache/
+.legacy/.jekyll-cache/
+.legacy/.jekyll-metadata/
+
+# Ruby / Bundler (legacy site)
 .bundle/
 vendor/
-Gemfile.lock
 
-# macOS system files
-.DS_Store
-
-# VS Code settings
-.vscode/
-
-# Node / NPM (if you ever add JS tooling)
-node_modules/
-package-lock.json
-npm-debug.log*
-
-# Logs / temp
 *.log
 *.tmp
+.omx/
+.omc/
+.specstory

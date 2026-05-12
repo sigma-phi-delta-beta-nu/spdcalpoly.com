@@ -1,0 +1,35 @@
+---
+import { rushEvents } from "../data/rush";
+import RushIcon from "./icons/RushIcon.astro";
+---
+<ol class="relative pl-6 md:pl-0">
+  <!-- vertical rail -->
+  <div class="absolute left-[32px] md:left-[112px] top-3 bottom-3 w-px bg-gold/40"></div>
+
+  {rushEvents.map((e, i) => (
+    <li class="relative grid md:grid-cols-[112px_1fr] items-start gap-x-6 py-3">
+      <!-- date chip -->
+      <div class="flex md:justify-end">
+        <span class="inline-flex h-9 items-center px-3 bg-crimson text-ivory text-[0.7rem] font-semibold tracking-[0.2em] uppercase rounded-sm shadow-[inset_0_-2px_0_rgba(0,0,0,0.18)]">{e.dateLabel}</span>
+      </div>
+
+      <!-- card -->
+      <div class="relative">
+        <!-- dot on the rail -->
+        <span class="absolute -left-7 md:-left-[26px] top-3.5 h-2.5 w-2.5 rounded-full bg-gold border-2 border-ivory ring-2 ring-gold/30"></span>
+
+        <div class="bg-ivory border border-ink/10 rounded-sm px-5 md:px-6 py-4 flex items-start gap-5 transition-colors hover:border-gold/40 hover:bg-ivory-warm/40">
+          <div class="text-gold shrink-0 mt-1"><RushIcon name={e.icon} size={28} /></div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 class="font-display text-2xl text-ink leading-none">{e.title}</h3>
+              <span class="text-[0.78rem] font-semibold tracking-[0.2em] uppercase text-gold">{e.time}</span>
+            </div>
+            <p class="mt-1 text-xs uppercase tracking-[0.22em] text-ink/55">{e.day} · {e.location}</p>
+            <p class="mt-2 text-[0.95rem] text-ink/75 leading-relaxed max-w-2xl">{e.description}</p>
+          </div>
+        </div>
+      </div>
+    </li>
+  ))}
+</ol>

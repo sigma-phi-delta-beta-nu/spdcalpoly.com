@@ -1,0 +1,42 @@
+---
+import "../styles/global.css";
+import BaseHead from "../components/BaseHead.astro";
+import JsonLd from "../components/JsonLd.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  navVariant?: "dark" | "ivory";
+  current?: string;
+  hideFooter?: boolean;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image,
+  navVariant = "dark",
+  current = Astro.url.pathname,
+  hideFooter = false,
+  noindex = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} image={image} noindex={noindex} />
+    <JsonLd pageName={title} pageDescription={description} />
+  </head>
+  <body class="paper text-ink antialiased">
+    <Nav variant={navVariant} current={current} />
+    <main>
+      <slot />
+    </main>
+    {!hideFooter && <Footer />}
+  </body>
+</html>

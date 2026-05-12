@@ -1,0 +1,97 @@
+---
+import { site } from "../data/site";
+
+interface Props {
+  pageName?: string;
+  pageDescription?: string;
+  pageUrl?: string;
+}
+const {
+  pageName,
+  pageDescription = site.description,
+  pageUrl,
+} = Astro.props;
+
+const url = pageUrl ?? new URL(Astro.url.pathname, site.url).toString();
+
+const organization = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${site.url}/#organization`,
+  name: site.fullName,
+  alternateName: ["ΣΦΔ Beta-Nu", "Sigma Phi Delta Cal Poly", "SPD Beta-Nu"],
+  url: site.url,
+  email: site.email,
+  description: site.description,
+  foundingDate: "1924-04-11",
+  founder: {
+    "@type": "Organization",
+    name: "Sigma Phi Delta Fraternity",
+    foundingLocation: site.foundedAt,
+  },
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Sigma Phi Delta Fraternity",
+    url: "https://sigmaphidelta.org",
+  },
+  memberOf: {
+    "@type": "CollegeOrUniversity",
+    name: "California Polytechnic State University, San Luis Obispo",
+    url: "https://www.calpoly.edu",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "San Luis Obispo",
+    addressRegion: "CA",
+    addressCountry: "US",
+  },
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "recruitment",
+      email: "recruitment.spd.calpoly@gmail.com",
+      areaServed: "California Polytechnic State University, San Luis Obispo",
+      availableLanguage: "English",
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "general inquiries",
+      email: site.email,
+      availableLanguage: "English",
+    },
+  ],
+  sameAs: [
+    site.social.facebook,
+    site.social.instagram,
+    "https://en.wikipedia.org/wiki/Sigma_Phi_Delta",
+  ],
+  knowsAbout: [
+    "Engineering education",
+    "Professional fraternity",
+    "Cal Poly San Luis Obispo",
+    "Aerospace Engineering",
+    "Mechanical Engineering",
+    "Computer Engineering",
+    "Civil Engineering",
+    "Electrical Engineering",
+    "Software Engineering",
+  ],
+  slogan: site.motto,
+};
+
+const webPage = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageName ?? site.fullName,
+  description: pageDescription,
+  url,
+  isPartOf: {
+    "@type": "WebSite",
+    name: site.fullName,
+    url: site.url,
+  },
+  about: { "@id": `${site.url}/#organization` },
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(organization)} />
+<script type="application/ld+json" set:html={JSON.stringify(webPage)} />

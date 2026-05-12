@@ -1,0 +1,122 @@
+---
+import Base from "../layouts/Base.astro";
+import RushTimeline from "../components/RushTimeline.astro";
+import RushEventsJsonLd from "../components/RushEventsJsonLd.astro";
+import FaqSection from "../components/FaqSection.astro";
+import CastleIcon from "../components/icons/CastleIcon.astro";
+import CompassIcon from "../components/icons/CompassIcon.astro";
+import Arrow from "../components/icons/Arrow.astro";
+import { eligibleMajors } from "../data/rush";
+import { site } from "../data/site";
+
+const heroOne = "/img_2023/recruitment_one.jpg";
+const heroTwo = "/img_2023/formal_three.jpg";
+const heroThree = "/img_2023/alumni_one.JPG";
+---
+
+<Base
+  title="Winter Rush 2026 — Sigma Phi Delta Beta-Nu (Cal Poly SLO)"
+  description="Winter Rush 2026 schedule for the Beta-Nu Chapter of Sigma Phi Delta at Cal Poly San Luis Obispo — what rush is, when each event is, and how to join."
+  current="/recruitment"
+>
+  <RushEventsJsonLd />
+
+  <!-- HERO COLLAGE -->
+  <section class="relative isolate overflow-hidden h-[68vh] min-h-[520px] max-h-[760px]">
+    <div class="absolute inset-0 grid grid-cols-3 hero-duotone">
+      <img src={heroOne} alt="Brothers at recruitment" class="h-full w-full object-cover object-center" />
+      <img src={heroTwo} alt="Brothers at formal" class="h-full w-full object-cover object-center hidden md:block" />
+      <img src={heroThree} alt="Alumni event" class="h-full w-full object-cover object-center hidden md:block" />
+    </div>
+    <div class="relative z-10 h-full mx-auto max-w-[1440px] px-6 md:px-10 flex items-center">
+      <div class="max-w-3xl">
+        <p class="eyebrow text-gold-soft rise-in">Recruitment · Week 2 of Winter Quarter</p>
+        <h1 class="headline text-ivory mt-5 text-[clamp(3rem,8vw,6.4rem)] rise-in delay-1">
+          Winter Rush <span class="headline-italic text-gold-soft">2026</span>
+        </h1>
+        <p class="mt-6 max-w-xl text-ivory/85 text-lg leading-relaxed rise-in delay-2">
+          A week of events to meet the brotherhood: BBQ, sports, games, a professional night, and invite-only events for the next stage of recruitment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="relative py-20 md:py-24">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="grid lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-4">
+          <p class="eyebrow text-crimson mb-3">What is rush?</p>
+          <h2 class="font-display text-4xl md:text-5xl text-ink leading-[1] tracking-tightest">
+            Five nights to find <span class="headline-italic">your fit.</span>
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6 text-ink/80 leading-relaxed text-[1.02rem]">
+          <p>Winter Rush 2026 runs Monday, January 12 through Thursday, January 15, 2026 — Week 2 of Winter Quarter — with each open event from 6 to 8 PM. There's no commitment to come: show up to any event, meet the brothers, and decide for yourself.</p>
+          <p class="mt-4">Monday is BBQ at NOMO, Tuesday is Sports Night at Doerr, Wednesday is Game Night at The Island, and Thursday is Professional Night at The Castle. Wednesday and Thursday meet at the PAC for rides. Friday and Saturday are invite-only.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE OF EVENTS -->
+  <section class="relative paper py-20 md:py-24 border-y border-ink/5">
+    <div class="mx-auto max-w-[1280px] px-6 md:px-10">
+      <RushTimeline />
+    </div>
+  </section>
+
+  <!-- OUR STANDARDS -->
+  <section class="relative py-24 md:py-28">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div class="grid lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-4">
+          <div class="text-gold mb-4"><CompassIcon size={42} strokeWidth={1.2} /></div>
+          <p class="eyebrow text-crimson mb-3">Eligibility</p>
+          <h2 class="font-display text-4xl md:text-5xl text-ink leading-[1] tracking-tightest">
+            Our <span class="headline-italic">Standards.</span>
+          </h2>
+          <p class="mt-5 text-ink/75 leading-relaxed">Sigma Phi Delta is a professional fraternity of engineers. The original site lists these Cal Poly majors as eligible for recruitment.</p>
+        </div>
+
+        <div class="lg:col-span-8">
+          <div class="relative border border-ink/10 bg-ivory rounded-sm p-7 md:p-9">
+            <span class="absolute -top-3 left-7 px-3 bg-ivory eyebrow text-crimson">Eligible Majors</span>
+            <ul class="grid sm:grid-cols-2 gap-x-8 gap-y-3 mt-2">
+              {eligibleMajors.map((m) => (
+                <li class="flex items-start gap-3 text-ink/85">
+                  <span class="mt-1.5 inline-block h-1.5 w-1.5 rounded-full bg-gold shrink-0"></span>
+                  <span>{m}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FaqSection />
+
+  <!-- BOTTOM CTA BAR -->
+  <section class="relative">
+    <div class="mx-auto max-w-[1440px] px-6 md:px-10 pb-24 md:pb-28">
+      <div class="relative overflow-hidden bg-ink text-ivory rounded-sm">
+        <div class="absolute -right-10 -bottom-10 text-gold/15">
+          <CastleIcon size={240} strokeWidth={0.8} />
+        </div>
+        <div class="relative px-8 md:px-12 py-12 md:py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <p class="eyebrow text-gold-soft mb-2">Questions?</p>
+            <p class="font-display text-2xl md:text-3xl">Reach our Recruitment Chairmen <span class="headline-italic text-gold-soft">— Carlo & Luke.</span></p>
+            <p class="mt-2 text-ivory/70">
+              <a class="link-underline text-gold" href="mailto:recruitment.spd.calpoly@gmail.com">recruitment.spd.calpoly@gmail.com</a> &nbsp;·&nbsp; (206) 698-6998 &nbsp;·&nbsp; (707) 227-4535
+            </p>
+          </div>
+          <a class="btn btn-primary self-start md:self-auto" href="mailto:recruitment.spd.calpoly@gmail.com?subject=Interested%20in%20Rushing%20SPD">Sign Up to Rush <Arrow size={14} /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

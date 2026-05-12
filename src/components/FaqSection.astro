@@ -1,0 +1,39 @@
+---
+// Visible recruitment Q&A + schema.org/FAQPage JSON-LD. The visible copy and
+// the structured data both come from src/data/faq.ts. Questions render as
+// <h3> under a section <h2> for a clean heading hierarchy that AI assistants
+// can extract passage-by-passage.
+import { recruitmentFaqs } from "../data/faq";
+
+const faqPage = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: recruitmentFaqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.answer,
+    },
+  })),
+};
+---
+<section class="relative py-24 md:py-28 border-t border-ink/5">
+  <div class="mx-auto max-w-[1100px] px-6 md:px-10">
+    <p class="eyebrow text-crimson mb-3">Common questions</p>
+    <h2 class="font-display text-4xl md:text-5xl text-ink leading-[1] tracking-tightest mb-12">
+      Rush, <span class="headline-italic">answered.</span>
+    </h2>
+    <dl class="divide-y divide-ink/10 border-y border-ink/10">
+      {recruitmentFaqs.map((f) => (
+        <div class="py-7 grid md:grid-cols-12 gap-4 md:gap-8">
+          <dt class="md:col-span-4">
+            <h3 class="font-display text-xl text-ink leading-snug">{f.question}</h3>
+          </dt>
+          <dd class="md:col-span-8 text-ink/80 leading-relaxed text-[1.02rem]">{f.answer}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+<script type="application/ld+json" set:html={JSON.stringify(faqPage)} />

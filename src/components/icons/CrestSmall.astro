@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+  size?: number;
+  alt?: string;
+}
+const {
+  class: cls = "",
+  size = 76,
+  alt = "Sigma Phi Delta coat of arms",
+} = Astro.props;
+---
+<img
+  src="/images/sigma-phi-delta-coat-of-arms.png"
+  alt={alt}
+  width={size}
+  height={size}
+  loading="lazy"
+  decoding="async"
+  class:list={[cls, "shrink-0 object-contain"]}
+/>

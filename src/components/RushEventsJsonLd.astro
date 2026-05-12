@@ -1,0 +1,41 @@
+---
+// schema.org/Event JSON-LD for each scheduled (non-invite-only) Winter Rush
+// event. Drives off src/data/rush.ts so the schedule and the structured data
+// can never drift. Helps AI Overviews answer "when is SPD rush at Cal Poly".
+import { site } from "../data/site";
+import { rushEvents } from "../data/rush";
+
+const events = rushEvents
+  .filter((e) => e.startDate && e.endDate)
+  .map((e) => ({
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: `Sigma Phi Delta Winter Rush 2026 — ${e.title}`,
+    description: e.description,
+    startDate: e.startDate,
+    endDate: e.endDate,
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    isAccessibleForFree: true,
+    url: `${site.url}/recruitment`,
+    location: {
+      "@type": "Place",
+      name: e.location,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "San Luis Obispo",
+        addressRegion: "CA",
+        addressCountry: "US",
+      },
+    },
+    organizer: {
+      "@type": "Organization",
+      "@id": `${site.url}/#organization`,
+      name: site.fullName,
+      url: site.url,
+    },
+  }));
+---
+{events.map((event) => (
+  <script type="application/ld+json" set:html={JSON.stringify(event)} />
+))}
