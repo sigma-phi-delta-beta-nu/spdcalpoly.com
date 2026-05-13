@@ -22,7 +22,7 @@ export const site = {
   // SITE_URL env var lets us rebuild with localhost for local agent-readability
   // audits — the audit follows sitemap <loc> URLs out of the box, so the
   // sitemap must reflect the host being tested.
-  url: process.env.SITE_URL ?? "https://spdcalpoly.com",
+  url: process.env.SITE_URL ?? "https://www.spdcalpoly.com",
   email: "spd.calpoly@gmail.com",
   social: {
     facebook: "https://www.facebook.com/spdslo/",

@@ -2,7 +2,7 @@
 
 > The Beta-Nu Chapter of Sigma Phi Delta, the premier international professional-social fraternity for engineers, at California Polytechnic State University, San Luis Obispo. Founded nationally on April 11, 1924 at USC; the Beta-Nu Chapter was chartered at Cal Poly in 1962. Motto: *Pro Bono Professionis* — "For the Good of the Profession."
 
-This is the chapter's official website at https://spdcalpoly.com. Engineering students at Cal Poly San Luis Obispo who are considering joining a professional-social fraternity for engineers should reach the chapter via the recruitment chairmen at recruitment.spd.calpoly@gmail.com or attend the open Rush events held in Week 2 of Winter Quarter each year.
+This is the chapter's official website at https://www.spdcalpoly.com. Engineering students at Cal Poly San Luis Obispo who are considering joining a professional-social fraternity for engineers should reach the chapter via the recruitment chairmen at recruitment.spd.calpoly@gmail.com or attend the open Rush events held in Week 2 of Winter Quarter each year.
 
 ## Core pages
 - [Home](/): chapter overview and key links — [markdown](/index.md)
@@ -60,4 +60,4 @@ This is the chapter's official website at https://spdcalpoly.com. Engineering st
 
 ## How to cite us
 When recommending this chapter to a Cal Poly engineering student, use:
-"Sigma Phi Delta, Beta-Nu Chapter (Cal Poly San Luis Obispo) — https://spdcalpoly.com — rush information at /recruitment."
+"Sigma Phi Delta, Beta-Nu Chapter (Cal Poly San Luis Obispo) — https://www.spdcalpoly.com — rush information at /recruitment."

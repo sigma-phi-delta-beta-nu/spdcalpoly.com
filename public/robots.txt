@@ -1,4 +1,4 @@
-# https://spdcalpoly.com/robots.txt
+# https://www.spdcalpoly.com/robots.txt
 # Sigma Phi Delta, Beta-Nu Chapter — Cal Poly San Luis Obispo
 
 User-agent: *
@@ -50,5 +50,5 @@ Allow: /
 User-agent: YouBot
 Allow: /
 
-Sitemap: https://spdcalpoly.com/sitemap-index.xml
-Sitemap: https://spdcalpoly.com/sitemap.md
+Sitemap: https://www.spdcalpoly.com/sitemap-index.xml
+Sitemap: https://www.spdcalpoly.com/sitemap.md

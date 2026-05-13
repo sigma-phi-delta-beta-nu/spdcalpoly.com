@@ -4,7 +4,7 @@ import tailwind from "@astrojs/tailwind";
 
 // SITE_URL override lets us point sitemap.xml + canonical URLs at localhost
 // during a local agent-readability audit run. Production builds leave it unset.
-const site = process.env.SITE_URL ?? "https://spdcalpoly.com";
+const site = process.env.SITE_URL ?? "https://www.spdcalpoly.com";
 
 // https://astro.build/config
 export default defineConfig({
