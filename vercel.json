@@ -12,6 +12,21 @@
       "source": "/elements",
       "destination": "/recruitment",
       "statusCode": 301
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "statusCode": 301
     }
   ],
   "rewrites": [
